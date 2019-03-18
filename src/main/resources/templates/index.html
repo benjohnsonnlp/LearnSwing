@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Random Character Generator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Name</td>
+        <td th:text=${character.name}></td>
+    </tr>
+    <tr>
+        <td>Strength</td>
+        <td th:text=${character.strength}></td>
+    </tr>
+    <tr>
+        <td>Dexterity</td>
+        <td th:text=${character.dexterity}></td>
+    </tr>
+    <tr>
+        <td>Wisdom</td>
+        <td th:text=${character.wisdom}></td>
+    </tr>
+    <tr>
+        <td>Charisma</td>
+        <td th:text=${character.charisma}></td>
+    </tr>
+    <tr>
+        <td>Intelligence</td>
+        <td th:text=${character.intelligence}></td>
+    </tr>
+    <tr>
+        <td>Constitution</td>
+        <td th:text=${character.constitution}></td>
+    </tr>
+
+</table>
+</body>
+</html>
