@@ -13,11 +13,12 @@
             <input type="submit" value="Get"/>
         </form>
 
-        <form action="/character/" method="POST" th:object="${character}">
+        <form th:if="${character != null}" action="/character/" method="POST" th:object="${character}">
+            <input type="hidden" th:field="*{name}" th:value="${character.name}" />
             <table>
                 <tr>
                     <td>Name</td>
-                    <td th:text="${character.name}"></td>
+                    <td th:text="${character.name}" th:field="*{name}"></td>
                 </tr>
                 <tr>
                     <td>Strength</td>
@@ -45,7 +46,7 @@
                 </tr>
 
             </table>
-            <input th:if="${character.id == null}"  type="submit" value="Save"/>
+            <input type="submit" value="Save"/>
         </form>
     </body>
 </html>

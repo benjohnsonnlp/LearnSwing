@@ -3,10 +3,7 @@ package sheet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,7 +18,7 @@ public class IndexController {
         List<Character> characters = repository.findByName(name);
         Character character;
         if (name.equalsIgnoreCase("")) {
-            character = new Character("");
+            character = null;
         } else if (characters.isEmpty()) {
             character = new Character(name);
         } else {
@@ -34,5 +31,16 @@ public class IndexController {
     @GetMapping("/character/")
     public @ResponseBody Character getCharacter(@RequestParam(name="name") String name) {
         return repository.findByName(name).get(0);
+    }
+
+    @PostMapping("/character/")
+    public String saveCharacter(@ModelAttribute Character character, Model model) {
+        List<Character> names = repository.findByName(character.name);
+        if (!names.isEmpty()) {
+            character.id = names.get(0).id;
+        }
+        repository.save(character);
+        model.addAttribute("character", character);
+        return "index";
     }
 }
