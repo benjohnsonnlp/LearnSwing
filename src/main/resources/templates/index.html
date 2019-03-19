@@ -1,40 +1,51 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Random Character Generator</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
-<body>
-<table>
-    <tr>
-        <td>Name</td>
-        <td th:text=${character.name}></td>
-    </tr>
-    <tr>
-        <td>Strength</td>
-        <td th:text=${character.strength}></td>
-    </tr>
-    <tr>
-        <td>Dexterity</td>
-        <td th:text=${character.dexterity}></td>
-    </tr>
-    <tr>
-        <td>Wisdom</td>
-        <td th:text=${character.wisdom}></td>
-    </tr>
-    <tr>
-        <td>Charisma</td>
-        <td th:text=${character.charisma}></td>
-    </tr>
-    <tr>
-        <td>Intelligence</td>
-        <td th:text=${character.intelligence}></td>
-    </tr>
-    <tr>
-        <td>Constitution</td>
-        <td th:text=${character.constitution}></td>
-    </tr>
+    <head>
+        <title>Random Character Generator</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body>
+        <form method="GET" action="/">
+            Enter a name for a character:
+            <input type="text" name="name"/>
+            <input type="submit" value="Get"/>
+        </form>
 
-</table>
-</body>
+        <form action="/character/" method="POST" th:object="${character}">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td th:text="${character.name}"></td>
+                </tr>
+                <tr>
+                    <td>Strength</td>
+                    <td><input type="text" th:value="${character.strength}" th:field="*{strength}"/></td>
+                </tr>
+                <tr>
+                    <td>Dexterity</td>
+                    <td><input type="text" th:value="${character.dexterity}" th:field="*{dexterity}"/></td>
+                </tr>
+                <tr>
+                    <td>Wisdom</td>
+                    <td><input type="text" th:value="${character.wisdom}" th:field="*{wisdom}"/></td>
+                </tr>
+                <tr>
+                    <td>Charisma</td>
+                    <td><input type="text" th:value="${character.charisma}" th:field="*{charisma}"/></td>
+                </tr>
+                <tr>
+                    <td>Intelligence</td>
+                    <td><input type="text" th:value="${character.intelligence}" th:field="*{intelligence}"/></td>
+                </tr>
+                <tr>
+                    <td>Constitution</td>
+                    <td><input type="text" th:value="${character.constitution}" th:field="*{constitution}"/></td>
+                </tr>
+
+            </table>
+            <input th:if="${character.id == null}"  type="submit" value="Save"/>
+        </form>
+    </body>
 </html>

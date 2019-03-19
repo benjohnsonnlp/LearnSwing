@@ -18,26 +18,26 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        repository.deleteAll();
-
-        // save a couple of characters
-        repository.save(new Character("Adam"));
-        repository.save(new Character("Ben"));
-
-        // fetch all characters
-        System.out.println("Characters found with findAll():");
-        System.out.println("-------------------------------");
-        for (Character character : repository.findAll()) {
-            System.out.println(character);
-        }
-        System.out.println();
-
-
-        System.out.println("Characters found with findByName(\"Adam\"):");
-        System.out.println("--------------------------------");
-        for (Character character : repository.findByName("Adam")) {
-            System.out.println(character);
-        }
+//        repository.deleteAll();
+//
+//        // save a couple of characters
+//        repository.save(new Character("Adam"));
+//        repository.save(new Character("Ben"));
+//
+//        // fetch all characters
+//        System.out.println("Characters found with findAll():");
+//        System.out.println("-------------------------------");
+//        for (Character character : repository.findAll()) {
+//            System.out.println(character);
+//        }
+//        System.out.println();
+//
+//
+//        System.out.println("Characters found with findByName(\"Adam\"):");
+//        System.out.println("--------------------------------");
+//        for (Character character : repository.findByName("Adam")) {
+//            System.out.println(character);
+//        }
 
     }
 
